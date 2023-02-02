@@ -1,0 +1,2 @@
+[workspace]
+members = ["cli_app", "json_parser"]
