@@ -1,2 +1,2 @@
 [workspace]
-members = ["cli_app", "json_parser"]
+members = ["cli_app", "json_parser", "file_handler"]

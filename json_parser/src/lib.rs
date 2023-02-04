@@ -1,6 +1,10 @@
+// This lib is to show how to read and write YAML
+
 use serde::{Deserialize, Serialize};
 use serde_yaml::{self};
 
+// The easiest way to get anything useful is to create a struct with the elements in our file
+// We need Serialize and Deserialize, as well as features = ["derive"] in the Cargo.toml
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Config {
     pub update_frequency_sec: u32,
@@ -8,6 +12,7 @@ pub struct Config {
     pub data_sources: Vec<String>,
 }
 
+// implementing a default for the config lets us generate a sensible file if it doesn't exist where we look for it
 impl Default for Config {
     fn default() -> Config {
         Config {
@@ -37,6 +42,8 @@ pub fn read_yaml() -> Config {
 }
 
 pub fn write_yaml(config: Config) -> Config{
+
+    // write to the file, creating a new one if it does not exist
     let file = std::fs::OpenOptions::new()
     .write(true)
     .create(true)
